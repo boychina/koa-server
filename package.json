@@ -12,6 +12,10 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^4.9.1",
+    "babel-plugin-import": "^1.13.3",
+    "ioredis": "^4.19.2",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.7",
     "koa-bodyparser": "^2.0.1",
@@ -27,10 +31,10 @@
     "koa-views": "^5.0.1",
     "mongoose": "^4.7.0",
     "next": "^8.0.3",
-    "restc": "0.0.3",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-redux": "^6.0.1"
+    "react-redux": "^6.0.1",
+    "restc": "0.0.3"
   },
   "devDependencies": {
     "@types/koa-bodyparser": "^3.0.20",
