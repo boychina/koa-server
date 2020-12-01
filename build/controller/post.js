@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -41,7 +42,7 @@ const response_1 = require("../util/response");
   "msg": ""
 }
  */
-router.get('/:id', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+router.get('/:id', (ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
     let id = ctx.params.id;
     yield post_1.default.findById(id).then((doc) => {
         ctx.body = response_1.resBody(doc);
@@ -60,7 +61,7 @@ router.get('/:id', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
  * @apiUse CODE_200
  * @apiUse CODE_500
  */
-router.get('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+router.get('/', (ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
     let path = url.parse(ctx.request.url, true);
     let query = path.query;
     let start = (+query.currentPage - 1) * +query.pageSize;
@@ -96,7 +97,7 @@ router.get('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
  * @apiUse CODE_200
  * @apiUse CODE_500
 */
-router.post('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+router.post('/', (ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
     let body = ctx.request.body;
     var post = {
         title: body.title,
@@ -121,7 +122,7 @@ router.post('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
  * @apiUse CODE_200
  * @apiUse CODE_500
 */
-router.put('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+router.put('/', (ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
     let body = ctx.request.body;
     let post = {
         author: body.author,
@@ -146,7 +147,7 @@ router.put('/', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
  * @apiUse CODE_200
  * @apiUse CODE_500
 */
-router.delete('/:id', (ctx, next) => __awaiter(this, void 0, void 0, function* () {
+router.delete('/:id', (ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
     let id = ctx.params.id;
     yield post_1.default.findByIdAndRemove(id).then((res) => {
         ctx.body = response_1.resInfo(ctx.request.url, 'success');

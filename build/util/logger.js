@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.logger = exports.LogType = void 0;
 const fs = require("fs");
 const log_1 = require("../model/log");
 var LogType;
