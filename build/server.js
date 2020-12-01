@@ -18,8 +18,8 @@ app.prepare().then(() => {
         yield handle(ctx.req, ctx.res);
         ctx.respond = false;
     }));
-    server.listen(3000, () => {
-        console.log('Koa server listening 3000');
+    server.listen(3003, () => {
+        console.log('Koa server listening 3003');
     });
 });
 //# sourceMappingURL=server.js.map

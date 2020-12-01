@@ -13,7 +13,7 @@ app.prepare().then(() => {
     ctx.respond = false;
   });
 
-  server.listen(3000, () => {
-    console.log('Koa server listening 3000');
+  server.listen(3003, () => {
+    console.log('Koa server listening 3003');
   });
 });
