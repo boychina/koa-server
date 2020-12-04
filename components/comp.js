@@ -1,1 +1,3 @@
-export default ({ children }) => <button>{children}</button>;
+import { Button } from "antd";
+
+export default ({ children }) => <Button>{children}</Button>;
