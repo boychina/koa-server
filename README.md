@@ -2,6 +2,8 @@
 
 > 这是一个基于Koa2和TypeScript的nodejs项目。
 
+// "dev": "supervisor -w build ./build/server.js",
+
 ### todo
 
 - [x] 实时监测

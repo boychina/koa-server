@@ -7,17 +7,20 @@
   "author": "zhaohuan",
   "license": "MIT",
   "scripts": {
-    "dev": "supervisor -w build ./build/server.js",
+    "dev": "node app.js",
     "doc": "apidoc -i build/controller/ -o doc/",
     "build": "tsc"
   },
   "dependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.9.1",
+    "axios": "^0.21.0",
     "babel-plugin-import": "^1.13.3",
     "ioredis": "^4.19.2",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.7",
+    "koa-body": "^4.2.0",
     "koa-bodyparser": "^2.0.1",
     "koa-convert": "^1.2.0",
     "koa-cors": "0.0.16",
@@ -33,7 +36,10 @@
     "next": "^8.0.3",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-redux": "^6.0.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "restc": "0.0.3"
   },
   "devDependencies": {
