@@ -25,7 +25,7 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  server.keys = ["Jokcy develop Github App"];
+  server.keys = ["Boychina develop Github App"];
 
   server.use(koaBody());
 

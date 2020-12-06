@@ -1,77 +1,75 @@
-import { useState, useCallback } from 'react'
-import getCofnig from 'next/config'
-import { connect } from 'react-redux'
-import { withRouter } from 'next/router'
-
-import axios from 'axios'
-
-import Link from 'next/link'
+import { useState, useCallback } from "react";
+import getCofnig from "next/config";
+import { connect } from "react-redux";
+import { withRouter } from "next/router";
+import axios from "axios";
+import Link from "next/link";
+import { GithubOutlined } from "@ant-design/icons";
 import {
   Button,
   Layout,
-  Icon,
   Input,
   Avatar,
   Tooltip,
   Dropdown,
   Menu,
-} from 'antd'
+} from "antd";
 
-import Container from './Container'
+import Container from "./Container";
 
-import { logout } from '../store/store'
+import { logout } from "../store/store";
 
-const { Header, Content, Footer } = Layout
+const { Header, Content, Footer } = Layout;
 
-const { publicRuntimeConfig } = getCofnig()
+const { publicRuntimeConfig } = getCofnig();
 
 const githubIconStyle = {
-  color: 'white',
+  color: "white",
   fontSize: 40,
-  display: 'block',
+  display: "block",
   paddingTop: 10,
   marginRight: 20,
-}
+};
 
 const footerStyle = {
-  textAlign: 'center',
-}
+  textAlign: "center",
+};
 
 function MyLayout({ children, user, logout, router }) {
-  const urlQuery = router.query && router.query.query
+  const urlQuery = router.query && router.query.query;
 
-  const [search, setSearch] = useState(urlQuery || '')
+  const [search, setSearch] = useState(urlQuery || "");
 
   const handleSearchChange = useCallback(
-    event => {
-      setSearch(event.target.value)
+    (event) => {
+      setSearch(event.target.value);
     },
-    [setSearch],
-  )
+    [setSearch]
+  );
 
   const handleOnSearch = useCallback(() => {
-    router.push(`/search?query=${search}`)
-  }, [search])
+    router.push(`/search?query=${search}`);
+  }, [search]);
 
   const handleLogout = useCallback(() => {
-    logout()
-  }, [logout])
+    logout();
+  }, [logout]);
 
-  const handleGotoOAuth = useCallback(e => {
-    e.preventDefault()
+  const handleGotoOAuth = useCallback((e) => {
+    e.preventDefault();
     axios
       .get(`/prepare-auth?url=${router.asPath}`)
-      .then(resp => {
+      .then((resp) => {
         if (resp.status === 200) {
-          location.href = publicRuntimeConfig.OAUTH_URL
+          location.href = publicRuntimeConfig.OAUTH_URL;
         } else {
-          console.log('prepare auth failed', resp)
+          console.log("prepare auth failed", resp);
         }
       })
-      .catch(err => {
-        console.log('prepare auth failed', err)
-      })
-  }, [])
+      .catch((err) => {
+        console.log("prepare auth failed", err);
+      });
+  }, []);
 
   const userDropDown = (
     <Menu>
@@ -81,7 +79,7 @@ function MyLayout({ children, user, logout, router }) {
         </a>
       </Menu.Item>
     </Menu>
-  )
+  );
 
   return (
     <Layout>
@@ -90,7 +88,7 @@ function MyLayout({ children, user, logout, router }) {
           <div className="header-left">
             <div className="logo">
               <Link href="/">
-                <Icon type="github" style={githubIconStyle} />
+                <GithubOutlined style={githubIconStyle} />
               </Link>
             </div>
             <div>
@@ -125,8 +123,8 @@ function MyLayout({ children, user, logout, router }) {
         <Container>{children}</Container>
       </Content>
       <Footer style={footerStyle}>
-        Develop by Jokcy @
-        <a href="mailto:jokcy@hotmail.com">jokcy@hotmail.com</a>
+        Develop by 淡烘糕 @
+        <a href="mailto:boychina@outlook.com">boychina@outlook.com</a>
       </Footer>
       <style jsx>{`
         .content {
@@ -157,18 +155,18 @@ function MyLayout({ children, user, logout, router }) {
         }
       `}</style>
     </Layout>
-  )
+  );
 }
 
 export default connect(
   function mapState(state) {
     return {
       user: state.user,
-    }
+    };
   },
   function mapReducer(dispatch) {
     return {
       logout: () => dispatch(logout()),
-    }
-  },
-)(withRouter(MyLayout))
+    };
+  }
+)(withRouter(MyLayout));

@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import { Icon } from 'antd'
+import Link from "next/link";
+import { StarFilled } from "@ant-design/icons";
 
-import { getLastUpdated } from '../lib/utils'
+import { getLastUpdated } from "../lib/utils";
 
 function getLicense(license) {
-  return license ? `${license.spdx_id} license` : ''
+  return license ? `${license.spdx_id} license` : "";
 }
 
 export default ({ repo }) => {
@@ -32,7 +32,7 @@ export default ({ repo }) => {
       <div className="lang-star">
         <span className="lang">{repo.language}</span>
         <span className="stars">
-          {repo.stargazers_count} <Icon type="star" theme="filled" />
+          {repo.stargazers_count} <StarFilled />
         </span>
       </div>
       <style jsx>{`
@@ -62,5 +62,5 @@ export default ({ repo }) => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
