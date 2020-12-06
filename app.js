@@ -80,7 +80,7 @@ app.prepare().then(() => {
     await next();
   });
 
-  server.listen(3000, () => {
+  server.listen(8000, () => {
     console.log("koa server listening on 8000");
   });
 
