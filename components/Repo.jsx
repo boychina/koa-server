@@ -58,7 +58,7 @@ export default ({ repo }) => {
           text-align: right;
         }
         .repo-desc {
-          width: 400px;
+          width: 360px;
         }
       `}</style>
     </div>

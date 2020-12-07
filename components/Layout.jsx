@@ -91,7 +91,7 @@ function MyLayout({ children, user, logout, router }) {
                 <GithubOutlined style={githubIconStyle} />
               </Link>
             </div>
-            <div>
+            <div className="searchInput">
               <Input.Search
                 placeholder="搜索仓库"
                 value={search}
@@ -137,6 +137,11 @@ function MyLayout({ children, user, logout, router }) {
         .header-left {
           display: flex;
           justify-content: flex-start;
+        }
+        .searchInput {
+          padding-top: 16px;
+          box-sizing: border-box;
+          line-height: 1;
         }
       `}</style>
       <style jsx global>{`
