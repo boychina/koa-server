@@ -74,7 +74,7 @@ app.prepare().then(() => {
     await next();
   });
 
-  server.listen(8000, () => {
-    console.log("koa server listening on 8000");
+  server.listen(process.env.PORT || 8000, () => {
+    console.log(`koa server listening on ${process.env.PORT || 8000}`);
   });
 });

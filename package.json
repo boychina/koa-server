@@ -7,7 +7,7 @@
   "author": "zhaohuan",
   "license": "MIT",
   "scripts": {
-    "dev": "node app.js",
+    "dev": "export PORT=9000 && node app.js",
     "doc": "apidoc -i build/controller/ -o doc/",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node app.js",
