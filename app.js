@@ -31,7 +31,7 @@ app.prepare().then(() => {
 
   const SESSION_CONFIG = {
     key: "jid",
-    store: new RedisSessionStore(redis),
+    store: new RedisSessionStore(redis)
   };
 
   server.use(session(SESSION_CONFIG, server));
@@ -40,22 +40,16 @@ app.prepare().then(() => {
   auth(server);
   api(server);
 
-  router.get("/a/:id", async (ctx) => {
+  router.get("/a/:id", async ctx => {
     const id = ctx.params.id;
     await handle(ctx.req, ctx.res, {
       pathname: "/a",
-      query: { id },
+      query: { id }
     });
     ctx.respond = false;
   });
 
-  router.get("/api/user/info", async (ctx) => {
-    // const id = ctx.params.id
-    // await handle(ctx.req, ctx.res, {
-    //   pathname: '/a',
-    //   query: { id },
-    // })
-    // ctx.respond = false
+  router.get("/api/user/info", async ctx => {
     const user = ctx.session.userInfo;
     if (!user) {
       ctx.status = 401;
@@ -83,6 +77,4 @@ app.prepare().then(() => {
   server.listen(8000, () => {
     console.log("koa server listening on 8000");
   });
-
-  // ctx.body
 });
