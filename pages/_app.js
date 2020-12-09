@@ -1,16 +1,10 @@
 import App, { Container } from "next/app";
 import { Provider } from "react-redux";
 import Router from "next/router";
-import Link from "next/link";
-
-import axios from "axios";
-
-import "antd/dist/antd.css";
-
 import Layout from "../components/Layout";
 import PageLoading from "../components/PageLoading";
-
 import testHoc from "../lib/with-redux";
+import "antd/dist/antd.css";
 
 class MyApp extends App {
   state = {
