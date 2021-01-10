@@ -56,11 +56,14 @@ if (typeof require !== "undefined") {
 
 module.exports = withBundleAnalyzer(
   withCss({
+    assetPrefix: '/blog',
+    basePath: '/blog',
     webpack(config) {
       config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
       return config;
     },
     publicRuntimeConfig: {
+      basePath: '/blog',
       GITHUB_OAUTH_URL: config.GITHUB_OAUTH_URL,
       OAUTH_URL: config.OAUTH_URL,
     },

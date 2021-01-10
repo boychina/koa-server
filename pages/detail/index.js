@@ -16,8 +16,6 @@ Detail.getInitialProps = async ({
     res,
   },
 }) => {
-  // console.log('detail getInitialProps invoked')
-
   const readmeResp = await api.request(
     {
       url: `/repos/${owner}/${name}/readme`,
