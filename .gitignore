@@ -91,3 +91,7 @@ sw.*
 
 # TS build
 build
+
+# yarn npm
+yarn.lock
+package-lock.json
