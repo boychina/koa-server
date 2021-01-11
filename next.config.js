@@ -3,6 +3,8 @@ const withCss = require("@zeit/next-css");
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 const config = require("./config");
 
+const prod = process.env.NODE_ENV === 'production';
+
 const configs = {
   // 编译文件的输出目录
   distDir: "dest",
@@ -51,19 +53,20 @@ const configs = {
 };
 
 if (typeof require !== "undefined") {
-  require.extensions[".css"] = (file) => {};
+  require.extensions[".css"] = (file) => { };
 }
 
 module.exports = withBundleAnalyzer(
   withCss({
-    assetPrefix: '/blog',
-    basePath: '/blog',
+    assetPrefix: prod ? '/blog' : '',
+    // basePath: '/blog',
+    // distDir: '.next/blog',
     webpack(config) {
       config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
       return config;
     },
     publicRuntimeConfig: {
-      basePath: '/blog',
+      linkPrefix: prod ? '/blog' : '',
       GITHUB_OAUTH_URL: config.GITHUB_OAUTH_URL,
       OAUTH_URL: config.OAUTH_URL,
     },

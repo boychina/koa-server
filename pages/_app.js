@@ -38,7 +38,6 @@ class MyApp extends App {
 
   static async getInitialProps(ctx) {
     const { Component } = ctx;
-    console.log("app init");
     let pageProps = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

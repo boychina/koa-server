@@ -2,10 +2,12 @@ import { memo, isValidElement, useEffect } from 'react'
 import { withRouter } from 'next/router'
 import { Row, Col, List, Pagination } from 'antd'
 import Link from 'next/link'
-import Router from 'next/router'
-
+import Router from 'next/router';
 import Repo from '../components/Repo'
 import { cacheArray } from '../lib/repo-basic-cache'
+
+import getConfig from 'next-server/config';
+const { linkPrefix } = getConfig().publicRuntimeConfig;
 
 const api = require('../lib/api')
 
@@ -48,7 +50,7 @@ const selectedItemStyle = {
   fontWeight: 100,
 }
 
-function noop() {}
+function noop() { }
 
 const per_page = 20
 
@@ -62,7 +64,7 @@ const FilterLink = memo(({ name, query, lang, sort, order, page }) => {
   queryString += `&per_page=${per_page}`
 
   return (
-    <Link href={`/search${queryString}`}>
+    <Link href={`${linkPrefix}/search${queryString}`}>
       {isValidElement(name) ? name : <a>{name}</a>}
     </Link>
   )
@@ -93,12 +95,12 @@ function Search({ router, repos }) {
                   {selected ? (
                     <span>{item}</span>
                   ) : (
-                    <FilterLink {...querys} lang={item} name={item} />
-                  )}
+                      <FilterLink {...querys} lang={item} name={item} />
+                    )}
                 </List.Item>
               )
-            }}
-          />
+            } }
+            />
           <List
             bordered
             header={<span className="list-header">排序</span>}
@@ -115,17 +117,17 @@ function Search({ router, repos }) {
                   {selected ? (
                     <span>{item.name}</span>
                   ) : (
-                    <FilterLink
-                      {...querys}
-                      sort={item.value}
-                      order={item.order}
-                      name={item.name}
-                    />
-                  )}
+                      <FilterLink
+                        {...querys}
+                        sort={item.value}
+                        order={item.order}
+                        name={item.name}
+                        />
+                    )}
                 </List.Item>
               )
-            }}
-          />
+            } }
+            />
         </Col>
         <Col span={18}>
           <h3 className="repos-title">{repos.total_count} 个仓库</h3>
@@ -143,8 +145,8 @@ function Search({ router, repos }) {
                   type === 'page' ? page : type === 'prev' ? page - 1 : page + 1
                 const name = type === 'page' ? page : ol
                 return <FilterLink {...querys} page={p} name={name} />
-              }}
-            />
+              } }
+              />
           </div>
         </Col>
       </Row>

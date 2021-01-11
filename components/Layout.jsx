@@ -14,10 +14,11 @@ import {
   Dropdown,
   Menu,
 } from "antd";
-
 import Container from "./Container";
-
 import { logout } from "../store/store";
+import getConfig from 'next-server/config';
+
+const { linkPrefix } = getConfig().publicRuntimeConfig;
 
 const { Header, Content, Footer } = Layout;
 
@@ -87,7 +88,7 @@ function MyLayout({ children, user, logout, router }) {
         <Container renderer={<div className="header-inner" />}>
           <div className="header-left">
             <div className="logo">
-              <Link href="/">
+              <Link href={`${linkPrefix}/`}>
                 <GithubOutlined style={githubIconStyle} />
               </Link>
             </div>
@@ -97,7 +98,7 @@ function MyLayout({ children, user, logout, router }) {
                 value={search}
                 onChange={handleSearchChange}
                 onSearch={handleOnSearch}
-              />
+                />
             </div>
           </div>
           <div className="header-right">
@@ -109,12 +110,12 @@ function MyLayout({ children, user, logout, router }) {
                   </a>
                 </Dropdown>
               ) : (
-                <Tooltip title="点击进行登录">
-                  <a href={`/prepare-auth?url=${router.asPath}`}>
-                    <Avatar size={40} icon="user" />
-                  </a>
-                </Tooltip>
-              )}
+                  <Tooltip title="点击进行登录">
+                    <a href={`/prepare-auth?url=${router.asPath}`}>
+                      <Avatar size={40} icon="user" />
+                    </a>
+                  </Tooltip>
+                )}
             </div>
           </div>
         </Container>
