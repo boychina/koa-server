@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { StarFilled } from "@ant-design/icons";
-import getConfig from 'next-server/config';
 import { getLastUpdated } from "../lib/utils";
-
-const { linkPrefix } = getConfig().publicRuntimeConfig
 
 function getLicense(license) {
   return license ? `${license.spdx_id} license` : "";
@@ -14,7 +11,7 @@ export default ({ repo }) => {
     <div className="root">
       <div className="basic-info">
         <h3 className="repo-title">
-          <Link href={`${linkPrefix}/detail?owner=${repo.owner.login}&name=${repo.name}`}>
+          <Link href={`/detail?owner=${repo.owner.login}&name=${repo.name}`}>
             <a>{repo.full_name}</a>
           </Link>
         </h3>

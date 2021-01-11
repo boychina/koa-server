@@ -5,9 +5,6 @@ import { withRouter } from "next/router";
 
 import api from "../lib/api";
 import { get, cache } from "../lib/repo-basic-cache";
-import getConfig from 'next-server/config';
-
-const { linkPrefix } = getConfig().publicRuntimeConfig;
 
 function makeQuery(queryObject) {
   const query = Object.entries(queryObject)
@@ -38,14 +35,14 @@ export default function (Comp, type = "index") {
             {type === "index" ? (
               <span className="tab">Readme</span>
             ) : (
-                <Link href={`${linkPrefix}/detail${query}`}>
+                <Link href={`/detail${query}`}>
                   <a className="tab index">Readme</a>
                 </Link>
               )}
             {type === "issues" ? (
               <span className="tab">Issues</span>
             ) : (
-                <Link href={`${linkPrefix}/detail/issues${query}`}>
+                <Link href={`/detail/issues${query}`}>
                   <a className="tab issues">Issues</a>
                 </Link>
               )}

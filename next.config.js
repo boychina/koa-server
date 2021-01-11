@@ -3,8 +3,6 @@ const withCss = require("@zeit/next-css");
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 const config = require("./config");
 
-const prod = process.env.NODE_ENV === 'production';
-
 const configs = {
   // 编译文件的输出目录
   distDir: "dest",
@@ -58,15 +56,11 @@ if (typeof require !== "undefined") {
 
 module.exports = withBundleAnalyzer(
   withCss({
-    assetPrefix: prod ? '/blog' : '',
-    // basePath: '/blog',
-    // distDir: '.next/blog',
     webpack(config) {
       config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
       return config;
     },
     publicRuntimeConfig: {
-      linkPrefix: prod ? '/blog' : '',
       GITHUB_OAUTH_URL: config.GITHUB_OAUTH_URL,
       OAUTH_URL: config.OAUTH_URL,
     },

@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 import { withRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import { GithubOutlined } from "@ant-design/icons";
+import { GithubOutlined, UserOutlined } from "@ant-design/icons";
 import {
-  Button,
   Layout,
   Input,
   Avatar,
@@ -16,9 +15,6 @@ import {
 } from "antd";
 import Container from "./Container";
 import { logout } from "../store/store";
-import getConfig from 'next-server/config';
-
-const { linkPrefix } = getConfig().publicRuntimeConfig;
 
 const { Header, Content, Footer } = Layout;
 
@@ -88,7 +84,7 @@ function MyLayout({ children, user, logout, router }) {
         <Container renderer={<div className="header-inner" />}>
           <div className="header-left">
             <div className="logo">
-              <Link href={`${linkPrefix}/`}>
+              <Link href="/">
                 <GithubOutlined style={githubIconStyle} />
               </Link>
             </div>
@@ -112,7 +108,7 @@ function MyLayout({ children, user, logout, router }) {
               ) : (
                   <Tooltip title="点击进行登录">
                     <a href={`/prepare-auth?url=${router.asPath}`}>
-                      <Avatar size={40} icon="user" />
+                      <Avatar size={40} icon={<UserOutlined />} />
                     </a>
                   </Tooltip>
                 )}
