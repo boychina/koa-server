@@ -1,6 +1,6 @@
 import { Spin } from "antd";
 
-export default () => (
+const PageLoading = () => (
   <div className="root">
     <Spin />
     <style jsx>{`
@@ -19,3 +19,5 @@ export default () => (
     `}</style>
   </div>
 );
+
+export default PageLoading;

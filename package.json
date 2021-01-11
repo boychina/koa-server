@@ -39,7 +39,7 @@
     "koa-views": "^5.0.1",
     "markdown-it": "^12.0.2",
     "mongoose": "^4.7.0",
-    "next": "^8.0.3",
+    "next": "10.0.5",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^7.2.2",
@@ -53,6 +53,8 @@
     "@types/koa-router": "^7.0.21",
     "@types/mongoose": "^4.6.1",
     "@types/node": "^6.0.51",
-    "supervisor": "^0.12.0"
+    "@types/react": "^17.0.0",
+    "supervisor": "^0.12.0",
+    "typescript": "^4.1.3"
   }
 }

@@ -6,7 +6,7 @@ function getLicense(license) {
   return license ? `${license.spdx_id} license` : "";
 }
 
-export default ({ repo }) => {
+const Repo = ({ repo }) => {
   return (
     <div className="root">
       <div className="basic-info">
@@ -63,3 +63,5 @@ export default ({ repo }) => {
     </div>
   );
 };
+
+export default Repo;

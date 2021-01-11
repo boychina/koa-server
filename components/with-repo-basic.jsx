@@ -17,7 +17,7 @@ function makeQuery(queryObject) {
 }
 
 const isServer = typeof window === "undefined";
-export default function (Comp, type = "index") {
+const WithRepoBasic = (Comp, type = "index") => {
   function WithDetail({ repoBasic, router, ...rest }) {
     const query = makeQuery(router.query);
 
@@ -103,3 +103,5 @@ export default function (Comp, type = "index") {
 
   return withRouter(WithDetail);
 }
+
+export default WithRepoBasic;

@@ -9,7 +9,7 @@ const style = {
   paddingRight: 20,
 };
 
-export default ({ children, renderer = <div /> }) => {
+const Container = ({ children, renderer = <div /> }) => {
   const newElement = cloneElement(renderer, {
     style: Object.assign({}, renderer.props.style, style),
     children,
@@ -19,3 +19,5 @@ export default ({ children, renderer = <div /> }) => {
 
   // return <Comp style={style}>{children}</Comp>
 };
+
+export default Container;

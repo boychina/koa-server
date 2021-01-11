@@ -56,6 +56,8 @@ if (typeof require !== "undefined") {
 
 module.exports = withBundleAnalyzer(
   withCss({
+    basePath: '/blog',
+    assetPrefix: '/blog',
     webpack(config) {
       config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
       return config;
