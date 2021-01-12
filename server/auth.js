@@ -6,7 +6,7 @@ const { client_id, client_secret, request_token_url } = config.github;
 
 module.exports = (server) => {
   server.use(async (ctx, next) => {
-    if (ctx.path === "/auth") {
+    if (ctx.path === "/blog/auth") {
       const code = ctx.query.code;
       if (!code) {
         ctx.body = "code not exist";
@@ -41,8 +41,8 @@ module.exports = (server) => {
         });
 
         ctx.session.userInfo = userInfoResp.data;
-
-        ctx.redirect((ctx.session && ctx.session.urlBeforeOAuth) || "/");
+        console.log('ctx', ctx.session);
+        ctx.redirect((ctx.session && ctx.session.urlBeforeOAuth) || "/blog");
         ctx.session.urlBeforeOAuth = "";
       } else {
         const errorMsg = result.data && result.data.error;
