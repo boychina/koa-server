@@ -25,7 +25,7 @@ const allReducers = combineReducers({
 export function logout() {
   return (dispatch) => {
     axios
-      .post("/logout")
+      .post("/blog/logout")
       .then((resp) => {
         if (resp.status === 200) {
           dispatch({
